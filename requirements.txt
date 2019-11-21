@@ -1,7 +1,2 @@
-xlrd
-pandas
-numpy
-firebase-admin
-scipy
-kmodes
 google-cloud-bigquery
+pandas
