@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: inference-cronjob
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: inference-container
+            imagePullPolicy: Always
+            image: gcr.io/zwippe-kpi-258416/k8-model:latest
+            command: ["python3",  "process_bigquery_kubernetes.py"]
+          restartPolicy: Never
+      backoffLimit: 0
